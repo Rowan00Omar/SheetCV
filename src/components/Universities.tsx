@@ -22,7 +22,7 @@ const Universities: React.FC<UniversitiesProps> = ({ gid, language }) => {
     const lang = language;
 
     if (loading) return <p className="text-center py-4" > </p>;
-    if (!data || data.length === 0) return <p className="text-center py-4" > No data available </p>;
+    if (!data || data.length === 0) return <p className="text-center py-4" >  </p>; /*No data available*/
 
     const rows = data.filter(row => row.LanguageCode === lang).filter(row => row.Institution || row.Role || row.Period); // keep only rows with content
 

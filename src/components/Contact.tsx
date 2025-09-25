@@ -15,7 +15,7 @@ const Contact: React.FC<ContactProps> = ({ gid, language = "en" }) => {
   // if (error) return <p>Error: {error}</p>;
     console.log(`Error: ${error}`)
 
-  if (!data.length) return <p>No Contact data found</p>;
+  if (!data.length) return <p></p>; /*No Contact data found*/
 
   const row = data.find((d) => d.LanguageCode === language);
   if (!row) return <p>No matching language found</p>;

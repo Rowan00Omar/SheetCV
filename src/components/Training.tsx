@@ -25,7 +25,7 @@ const TrainingCourses: React.FC<TrainingCoursesProps> = ({ gid, language = "en" 
 //   if (error) return <p>Error: {error}</p>;
   console.log(`Error: ${error}`)
 
-  if (!data.length) return <p>No training courses found.</p>;
+  if (!data.length) return <p></p>; /*No training courses found.*/
 
   // Filter by language
   const rows = data.filter((row: any) => row.LanguageCode === language);

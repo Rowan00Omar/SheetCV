@@ -17,6 +17,9 @@ import { cvData } from './data';
 import type { Language } from './data';
 
 
+
+
+
 function App() {
   const [lang, setLang] = useState<Language>("en");
 

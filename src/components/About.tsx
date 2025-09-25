@@ -28,8 +28,10 @@ const CheckIcon = () => (
 );
 
 export const About: React.FC<AboutProps> = ({ gid, language = "en" }) => {
-  const { data, loading, error } = useSheetData(gid);
+  // const { data, loading, error } = useSheetData(gid);
+  const { data, loading, error } = useSheetData("AboutSheet"); // name of the sheet in Google Sheet
 
+  console.log(data)
   if (loading) return <p></p>; /*Loading About... */
   // if (error) return <p></p>;
   console.log(`Error: ${error}`)

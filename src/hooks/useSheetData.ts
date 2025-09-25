@@ -76,38 +76,69 @@
 // //   );
 // }
 
+// import { useEffect, useState } from "react";
+// import Papa from "papaparse";
+
+// const BASE_URL =
+//   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU4xxs8GJswt3KIpsBSSz8Y2tq12HN3nOPmrZkbr8cwZ3GL-cNFyNTAMry61mIhfRxFQM5jOODM3tL/pub";
+
+// export interface SheetRow {
+//   [key: string]: string;
+// }
+
+// export function useSheetData(gid: string) {
+//   const [data, setData] = useState<SheetRow[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         const url = `${BASE_URL}?gid=${gid}&single=true&output=csv`;
+//         const res = await fetch(url);
+//         const text = await res.text();
+
+//         const parsed = Papa.parse<SheetRow>(text, { header: true });
+//         setData(parsed.data);
+//       } catch (err: any) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }
+//     fetchData();
+//   }, [gid]);
+
+//   return { data, loading, error };
+// }
+
+
 import { useEffect, useState } from "react";
-import Papa from "papaparse";
 
-const BASE_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU4xxs8GJswt3KIpsBSSz8Y2tq12HN3nOPmrZkbr8cwZ3GL-cNFyNTAMry61mIhfRxFQM5jOODM3tL/pub";
-
-export interface SheetRow {
-  [key: string]: string;
-}
-
-export function useSheetData(gid: string) {
-  const [data, setData] = useState<SheetRow[]>([]);
+export function useSheetData<T = any>(sheetName: string) {
+  const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const url = `${BASE_URL}?gid=${gid}&single=true&output=csv`;
-        const res = await fetch(url);
-        const text = await res.text();
-
-        const parsed = Papa.parse<SheetRow>(text, { header: true });
-        setData(parsed.data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
+    setLoading(true);
+    fetch(`http://localhost:3000/api/fetchSheet?sheetName=${sheetName}`)
+      .then(res => {
+        console.log(res)
+        res.json()
+      })
+      .then(d => {
+        console.log('data', d)
+        setData(d);
         setLoading(false);
-      }
-    }
-    fetchData();
-  }, [gid]);
+      })
+      .catch(err => {
+        console.log('error', err)
+
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [sheetName]);
 
   return { data, loading, error };
 }

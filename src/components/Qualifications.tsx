@@ -25,7 +25,7 @@ const Qualifications: React.FC<QualificationsProps> = ({ gid, language = "en" })
   // if (error) return <p>Error: {error}</p>;
     console.log(`Error: ${error}`)
 
-  if (!data.length) return <p>No qualifications data found.</p>;
+  if (!data.length) return <p></p>; /*No qualifications data found. */
 
   // Filter rows by language
   const rows = data.filter((row: any) => row.LanguageCode === language);
