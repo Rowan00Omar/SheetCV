@@ -17,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange }) => {
       certificates: 'Certificates',
       trainingCourses: 'Training Courses',
       experience: 'Experience',
+      universities:"Universities",
       contact: 'Contact',
     },
     ar: {
@@ -26,6 +27,7 @@ const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange }) => {
       certificates: 'الشهادات',
       trainingCourses: 'الدورات التدريبية',
       experience: 'الخبرة العملية',
+      universities:"الجامعات",
       contact: 'تواصل',
     }
   };

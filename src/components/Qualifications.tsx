@@ -22,7 +22,9 @@ const Qualifications: React.FC<QualificationsProps> = ({ gid, language = "en" })
   const { data, loading, error } = useSheetData(gid);
 
   if (loading) return <p></p>; /*Loading qualifications...*/
-  if (error) return <p>Error: {error}</p>;
+  // if (error) return <p>Error: {error}</p>;
+    console.log(`Error: ${error}`)
+
   if (!data.length) return <p>No qualifications data found.</p>;
 
   // Filter rows by language

@@ -31,11 +31,12 @@ export const About: React.FC<AboutProps> = ({ gid, language = "en" }) => {
   const { data, loading, error } = useSheetData(gid);
 
   if (loading) return <p></p>; /*Loading About... */
-  if (error) return <p>Error: {error}</p>;
-  if (!data.length) return <p>No About data found</p>;
+  // if (error) return <p></p>;
+  console.log(`Error: ${error}`)
+  if (!data.length) return <p></p>; /*No About data found*/
 
   const row = data.find((d) => d.LanguageCode === language);
-  if (!row) return <p>No matching language found</p>;
+  if (!row) return <p></p>; /*No matching language found*/
 
   // Collect paragraphs dynamically (P1, P2, P3...)
   const paragraphs = Object.keys(row)

@@ -12,7 +12,9 @@ const Contact: React.FC<ContactProps> = ({ gid, language = "en" }) => {
   const { data, loading, error } = useSheetData(gid);
 
   if (loading) return <p></p>; /*Loading Contact... */
-  if (error) return <p>Error: {error}</p>;
+  // if (error) return <p>Error: {error}</p>;
+    console.log(`Error: ${error}`)
+
   if (!data.length) return <p>No Contact data found</p>;
 
   const row = data.find((d) => d.LanguageCode === language);

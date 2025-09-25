@@ -22,7 +22,9 @@ const TrainingCourses: React.FC<TrainingCoursesProps> = ({ gid, language = "en" 
   const { data, loading, error } = useSheetData(gid);
 
   if (loading) return <p></p>; /*Loading courses...*/
-  if (error) return <p>Error: {error}</p>;
+//   if (error) return <p>Error: {error}</p>;
+  console.log(`Error: ${error}`)
+
   if (!data.length) return <p>No training courses found.</p>;
 
   // Filter by language

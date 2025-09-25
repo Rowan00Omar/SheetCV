@@ -1,57 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import Header from "./components/Header";
-// import Hero from "./components/Hero";
-// import About from "./components/About";
-// import Career from "./components/Career";
-// import Skills from "./components/Skills";
-// import Credentials from "./components/Credentials";
-// import Documents from "./components/Documents";
-// import Videos from "./components/Videos";
-// import Contact from "./components/Contact";
-// import { fetchCvData, CvData, Language } from "./dataLoader";
-
-// function App() {
-//   const [lang, setLang] = useState<Language>("en");
-//   const [cvData, setCvData] = useState<CvData | null>(null);
-
-//   useEffect(() => {
-//     document.documentElement.lang = lang;
-//     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-//   }, [lang]);
-
-//   useEffect(() => {
-//     const urls = {
-//       en: "https://docs.google.com/spreadsheets/d/.../output=csv",
-//       ar: "https://docs.google.com/spreadsheets/d/.../output=csv",
-//     };
-//     fetchCvData(urls[lang], lang).then(setCvData);
-//   }, [lang]);
-
-//   if (!cvData) return <div>Loading...</div>; // ✅ works fine now
-
-//   return (
-//     <div className="bg-base-200 text-base-content font-sans">
-//       <Header
-//         lang={lang}
-//         onLanguageChange={setLang}
-//         navigation={cvData.navigation}
-//       />
-//       <main>
-//         <Hero galleryImages={cvData.galleryImages} motto={cvData.motto} />
-//         <About content={cvData.about} />
-//         <Career content={cvData.career} />
-//         <Skills content={cvData.skills} />
-//         <Credentials content={cvData.credentials} />
-//         <Documents content={cvData.documents} />
-//         <Videos content={cvData.videos} />
-//         <Contact content={cvData.contact} heroContent={cvData.hero} />
-//       </main>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -63,6 +9,7 @@ import Certificates from './components/Certificates';
 import Qualifications from './components/Qualifications';
 import Experience from './components/Experience';
 import TrainingCourses from './components/Training';
+import Universities from './components/Universities';
 import Documents from './components/Documents';
 import Videos from './components/Videos';
 import Contact from './components/Contact';
@@ -102,7 +49,7 @@ function App() {
     />}
 {/*navigation = { data.navigation }*/ }
 
-<main>
+<main  className="overflow-x-hidden">
 
   { GIDS.hero && GIDS.heroSlider && <Hero heroGid={ GIDS.hero } sliderGid = { GIDS.heroSlider } language = { lang } /> }
 { GIDS.about && <About gid={ GIDS.about } language = { lang } />}
@@ -110,7 +57,7 @@ function App() {
 { GIDS.certificates && <Certificates gid={ GIDS.certificates } language = { lang } />}
 { GIDS.experience && <Experience gid={ GIDS.experience } language = { lang } />}
 { GIDS.trainingCourses && <TrainingCourses gid={ GIDS.trainingCourses } language = { lang } />}
-{/*GIDS.career && <Career content={GIDS.career} />*/ }
+{GIDS.universities && <Universities gid={GIDS.universities} language = { lang } />}
 { GIDS.contact && <Contact gid={ GIDS.contact } language = { lang } />}
 </main>
   </div>

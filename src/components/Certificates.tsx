@@ -25,8 +25,10 @@ const Certificates: React.FC<CertificatesProps> = ({ gid, language = "en" }) => 
   const { data, loading, error } = useSheetData(gid);
 
   if (loading) return <p></p>; /*Loading certificates... */
-  if (error) return <p>Error: { error } </p>;
-  if (!data.length) return <p>No certificates data found.</p>;
+  // if (error) return <p>Error: { error } </p>;
+  console.log(`Error: ${error}`)
+
+  if (!data.length) return <p></p>; /*No certificates data found.*/
 
   // Filter rows by language
   const rows = data.filter((row: any) => row.LanguageCode === language);
