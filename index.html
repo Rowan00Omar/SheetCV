@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luxury">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmad Jaber Ashkanani - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <style>
+      :target {
+        scroll-padding-top: 100px;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root" style="overflow-x:hidden"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+          "react": "https://esm.sh/react@^19.0.0",
+          "react/": "https://esm.sh/react@^19.0.0/",
+          "react-dom/": "https://esm.sh/react-dom@^19.0.0/",
+          "framer-motion": "https://esm.sh/framer-motion@^11.1.7"
+        }
+      }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
